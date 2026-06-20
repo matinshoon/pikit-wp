@@ -32,7 +32,7 @@ class Pikit_Book_Button_Renderer {
 	 */
 	public static function render( array $args = array() ): string {
 		$defaults = array(
-			'text'  => __( 'Book now', 'pikit-booking-widget' ),
+			'text'  => __( 'Book now', 'pikit-widget' ),
 			'class' => self::DEFAULT_CLASS,
 			'style' => 'button',
 			'align' => '',

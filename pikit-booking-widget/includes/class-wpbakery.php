@@ -96,7 +96,7 @@ class Pikit_Booking_WPBakery {
 	public function register_category( $categories ) {
 		$categories[] = array(
 			'category'        => 'pikit',
-			'category_name'   => __( 'Pikit', 'pikit-booking-widget' ),
+			'category_name'   => __( 'Pikit', 'pikit-widget' ),
 			'category_weight' => 999,
 		);
 
@@ -142,7 +142,7 @@ class Pikit_Booking_WPBakery {
 			}
 
 			if ( 'title' === $param['param_name'] ) {
-				$param['value'] = __( 'Book now', 'pikit-booking-widget' );
+				$param['value'] = __( 'Book now', 'pikit-widget' );
 			}
 
 			$filtered[] = $param;
@@ -160,25 +160,25 @@ class Pikit_Booking_WPBakery {
 		return array(
 			array(
 				'type'        => 'textfield',
-				'heading'     => __( 'Text', 'pikit-booking-widget' ),
+				'heading'     => __( 'Text', 'pikit-widget' ),
 				'param_name'  => 'title',
-				'value'       => __( 'Book now', 'pikit-booking-widget' ),
+				'value'       => __( 'Book now', 'pikit-widget' ),
 				'admin_label' => true,
 			),
 			array(
 				'type'       => 'dropdown',
-				'heading'    => __( 'Alignment', 'pikit-booking-widget' ),
+				'heading'    => __( 'Alignment', 'pikit-widget' ),
 				'param_name' => 'align',
 				'value'      => array(
-					__( 'Left', 'pikit-booking-widget' )   => 'left',
-					__( 'Center', 'pikit-booking-widget' ) => 'center',
-					__( 'Right', 'pikit-booking-widget' )  => 'right',
+					__( 'Left', 'pikit-widget' )   => 'left',
+					__( 'Center', 'pikit-widget' ) => 'center',
+					__( 'Right', 'pikit-widget' )  => 'right',
 				),
 				'std'        => 'left',
 			),
 			array(
 				'type'        => 'textfield',
-				'heading'     => __( 'Extra class name', 'pikit-booking-widget' ),
+				'heading'     => __( 'Extra class name', 'pikit-widget' ),
 				'param_name'  => 'el_class',
 				'value'       => Pikit_Book_Button_Renderer::DEFAULT_CLASS,
 			),
@@ -201,11 +201,11 @@ class Pikit_Booking_WPBakery {
 		$btn_config = $use_native ? vc_btn_element_params() : array();
 
 		$map = array(
-			'name'        => __( 'Pikit Button', 'pikit-booking-widget' ),
+			'name'        => __( 'Pikit Button', 'pikit-widget' ),
 			'base'        => self::SHORTCODE_BASE,
 			'icon'        => $use_native && ! empty( $btn_config['icon'] ) ? $btn_config['icon'] : 'fa fa-calendar',
 			'category'    => 'pikit',
-			'description' => __( 'Button that opens the Pikit online booking widget.', 'pikit-booking-widget' ),
+			'description' => __( 'Button that opens the Pikit online booking widget.', 'pikit-widget' ),
 			'params'      => $this->get_button_params(),
 		);
 
@@ -234,7 +234,7 @@ class Pikit_Booking_WPBakery {
 	public function render_fallback_shortcode( $atts, $content = null ) {
 		$atts = shortcode_atts(
 			array(
-				'title'     => __( 'Book now', 'pikit-booking-widget' ),
+				'title'     => __( 'Book now', 'pikit-widget' ),
 				'text'      => '',
 				'el_class'  => Pikit_Book_Button_Renderer::DEFAULT_CLASS,
 				'align'     => 'left',

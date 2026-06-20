@@ -124,44 +124,21 @@ final class Pikit_Booking_Plugin {
 	}
 
 	/**
-	 * Build embed script snippet for display or output.
+	 * Build embed snippet preview text for the admin settings screen.
 	 *
 	 * @param string $installation_code Installation code.
 	 * @param string $load_type         LOAD_TYPE value.
-	 * @return string Safe HTML/JS snippet (values escaped with esc_js()).
+	 * @return string Human-readable snippet preview (not executed).
 	 */
 	public static function build_embed_snippet( $installation_code, $load_type ) {
 		$token     = self::sanitize_installation_code( $installation_code );
 		$load_type = in_array( $load_type, array( 'SEO_FRIENDLY', 'FAST_LOAD' ), true ) ? $load_type : 'SEO_FRIENDLY';
-		$loader    = PIKIT_WIDGET_LOADER_URL;
 
 		return sprintf(
-			'<script type="text/javascript">' . "\n" .
-			'  window.PIKIT_TOKEN = "%1$s";' . "\n" .
-			'  window.LOAD_TYPE = "%2$s";' . "\n" .
-			'  (function () {' . "\n" .
-			'    var d = document;' . "\n" .
-			'    var s = d.createElement("script");' . "\n" .
-			'    s.src = "%3$s";' . "\n" .
-			'    s.async = 1;' . "\n" .
-			'    d.head.appendChild(s);' . "\n" .
-			'  })();' . "\n" .
-			'</script>',
+			"window.PIKIT_TOKEN = '%1$s';\nwindow.LOAD_TYPE = '%2$s';\n// Enqueued script: %3$s",
 			esc_js( $token ),
 			esc_js( $load_type ),
-			esc_js( $loader )
+			PIKIT_WIDGET_LOADER_URL
 		);
-	}
-
-	/**
-	 * Output embed script snippet in wp_head.
-	 *
-	 * @param string $installation_code Installation code.
-	 * @param string $load_type         LOAD_TYPE value.
-	 * @return void
-	 */
-	public static function print_embed_snippet( $installation_code, $load_type ) {
-		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Values escaped with esc_js() in build_embed_snippet().
-		echo self::build_embed_snippet( $installation_code, $load_type );
 	}
 }

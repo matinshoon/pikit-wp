@@ -8,7 +8,7 @@
   "icon": "calendar-alt",
   "description": "Button that opens the Pikit online booking widget when clicked.",
   "keywords": ["pikit", "button", "book", "booking", "appointment", "schedule"],
-  "textdomain": "pikit-booking-widget",
+  "textdomain": "pikit-widget",
   "attributes": {
     "text": {
       "type": "rich-text",

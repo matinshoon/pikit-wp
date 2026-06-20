@@ -56,7 +56,7 @@ class Pikit_Booking_Block {
 			$categories,
 			array(
 				'slug'  => 'pikit',
-				'title' => __( 'Pikit', 'pikit-booking-widget' ),
+				'title' => __( 'Pikit', 'pikit-widget' ),
 				'icon'  => null,
 			)
 		);
@@ -151,7 +151,7 @@ class Pikit_Booking_Block {
 		} elseif ( ! empty( $attributes['content'] ) ) {
 			$text = $attributes['content'];
 		} else {
-			$text = __( 'Book now', 'pikit-booking-widget' );
+			$text = __( 'Book now', 'pikit-widget' );
 		}
 
 		$wrapper_classes = array( 'wp-block-button' );

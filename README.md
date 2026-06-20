@@ -39,6 +39,8 @@ pikit-wp/
 
 ## Development
 
+Source code: https://github.com/matinshoon/pikit-wp
+
 ```bash
 cd pikit-wp
 npm install

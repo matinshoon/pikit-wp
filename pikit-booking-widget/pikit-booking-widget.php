@@ -9,7 +9,7 @@
  *
  * @wordpress-plugin
  * Plugin Name:       Pikit Booking Widget
- * Plugin URI:        https://wordpress.org/plugins/pikit-booking-widget/
+ * Plugin URI:        https://wordpress.org/plugins/pikit-widget/
  * Description:       Embed the Pikit online booking widget on your WordPress site with a Gutenberg block, Elementor widget, WPBakery element, and shortcode.
  * Version:           1.0.0
  * Requires at least: 6.1
@@ -18,7 +18,7 @@
  * Author URI:        https://pikit.io
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       pikit-booking-widget
+ * Text Domain:       pikit-widget
  */
 
 defined( 'ABSPATH' ) || exit;

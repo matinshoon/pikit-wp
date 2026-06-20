@@ -18,7 +18,7 @@ This plugin is free to use. A [Pikit](https://pikit.io) account with online book
 
 = Features =
 
-* Official Pikit embed script in your site `<head>` (loads `book.pikit.io/install/widget.js`)
+* Official Pikit embed script enqueued on the front end (loads `book.pikit.io/install/widget.js`)
 * Branded **Pikit** admin settings page with setup checklist
 * **Gutenberg** block: *Pikit Button* (core Button styling: colors, typography, border, padding, width)
 * **Elementor** widget: *Pikit Button* (native Button controls)
@@ -33,6 +33,14 @@ This plugin is free to use. A [Pikit](https://pikit.io) account with online book
 * A Pikit account with online booking enabled
 * Your website URL configured in Pikit Business settings (must match this WordPress site, HTTPS recommended)
 * WordPress 6.1+ and PHP 7.4+
+
+== Development ==
+
+Source code and build tooling are available on GitHub:
+
+https://github.com/matinshoon/pikit-wp
+
+The Gutenberg block source lives in `src/book-button/`. Run `npm install && npm run build` from the repository root to compile assets into the plugin `build/` directory.
 
 == Installation ==
 

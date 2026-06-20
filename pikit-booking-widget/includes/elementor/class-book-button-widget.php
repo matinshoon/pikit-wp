@@ -36,7 +36,7 @@ class Pikit_Elementor_Book_Button_Widget extends Widget_Base {
 	 * @return string
 	 */
 	public function get_title() {
-		return __( 'Pikit Button', 'pikit-booking-widget' );
+		return __( 'Pikit Button', 'pikit-widget' );
 	}
 
 	/**
@@ -73,13 +73,13 @@ class Pikit_Elementor_Book_Button_Widget extends Widget_Base {
 		$this->start_controls_section(
 			'section_button',
 			array(
-				'label' => __( 'Pikit Button', 'pikit-booking-widget' ),
+				'label' => __( 'Pikit Button', 'pikit-widget' ),
 			)
 		);
 
 		$this->register_button_content_controls(
 			array(
-				'button_default_text' => __( 'Book now', 'pikit-booking-widget' ),
+				'button_default_text' => __( 'Book now', 'pikit-widget' ),
 			)
 		);
 
@@ -89,10 +89,10 @@ class Pikit_Elementor_Book_Button_Widget extends Widget_Base {
 		$this->add_control(
 			'custom_classes',
 			array(
-				'label'       => __( 'CSS Classes', 'pikit-booking-widget' ),
+				'label'       => __( 'CSS Classes', 'pikit-widget' ),
 				'type'        => Controls_Manager::TEXT,
 				'default'     => Pikit_Book_Button_Renderer::DEFAULT_CLASS,
-				'description' => __( 'Extra classes on the button element.', 'pikit-booking-widget' ),
+				'description' => __( 'Extra classes on the button element.', 'pikit-widget' ),
 				'separator'   => 'before',
 				'ai'          => array(
 					'active' => false,
@@ -104,7 +104,7 @@ class Pikit_Elementor_Book_Button_Widget extends Widget_Base {
 			'pikit_trigger_info',
 			array(
 				'type'            => Controls_Manager::RAW_HTML,
-				'raw'             => __( 'Opens the Pikit booking widget when clicked. The trigger link is fixed to <code>#pikit-open</code>.', 'pikit-booking-widget' ),
+				'raw'             => __( 'Opens the Pikit booking widget when clicked. The trigger link is fixed to <code>#pikit-open</code>.', 'pikit-widget' ),
 				'content_classes' => 'elementor-panel-alert elementor-panel-alert-info',
 			)
 		);
@@ -114,7 +114,7 @@ class Pikit_Elementor_Book_Button_Widget extends Widget_Base {
 		$this->start_controls_section(
 			'section_style',
 			array(
-				'label' => __( 'Button', 'pikit-booking-widget' ),
+				'label' => __( 'Button', 'pikit-widget' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);

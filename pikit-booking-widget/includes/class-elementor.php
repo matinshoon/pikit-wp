@@ -130,7 +130,7 @@ class Pikit_Booking_Elementor {
 		$elements_manager->add_category(
 			'pikit',
 			array(
-				'title' => __( 'Pikit', 'pikit-booking-widget' ),
+				'title' => __( 'Pikit', 'pikit-widget' ),
 				'icon'  => 'fa fa-calendar',
 			)
 		);

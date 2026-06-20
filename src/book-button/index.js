@@ -72,17 +72,17 @@ function clsx( ...parts ) {
  */
 function WidthPanel( { selectedWidth, setAttributes } ) {
 	return (
-		<PanelBody title={ __( 'Settings', 'pikit-booking-widget' ) }>
+		<PanelBody title={ __( 'Settings', 'pikit-widget' ) }>
 			<p className="pikit-button-panel-note">
 				{ __(
 					'This button always opens the Pikit booking widget. The link is fixed to #pikit-open.',
-					'pikit-booking-widget'
+					'pikit-widget'
 				) }
 			</p>
 			<p className="components-base-control__label">
-				{ __( 'Button width', 'pikit-booking-widget' ) }
+				{ __( 'Button width', 'pikit-widget' ) }
 			</p>
-			<ButtonGroup aria-label={ __( 'Button width', 'pikit-booking-widget' ) }>
+			<ButtonGroup aria-label={ __( 'Button width', 'pikit-widget' ) }>
 				{ [ 25, 50, 75, 100 ].map( ( widthValue ) => (
 					<Button
 						key={ widthValue }
@@ -171,8 +171,8 @@ function Edit( { attributes, setAttributes, className } ) {
 					tagName="a"
 					href={ PIKIT_TRIGGER_HREF }
 					id={ PIKIT_TRIGGER_ID }
-					aria-label={ __( 'Button text', 'pikit-booking-widget' ) }
-					placeholder={ __( 'Book now', 'pikit-booking-widget' ) }
+					aria-label={ __( 'Button text', 'pikit-widget' ) }
+					placeholder={ __( 'Book now', 'pikit-widget' ) }
 					value={ text }
 					onChange={ ( value ) => setAttributes( { text: value } ) }
 					onClick={ ( event ) => event.preventDefault() }

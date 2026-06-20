@@ -43,7 +43,7 @@ class Pikit_Booking_Shortcode {
 	public function render_shortcode( $atts ) {
 		$atts = shortcode_atts(
 			array(
-				'text'  => __( 'Book now', 'pikit-booking-widget' ),
+				'text'  => __( 'Book now', 'pikit-widget' ),
 				'class' => Pikit_Book_Button_Renderer::DEFAULT_CLASS,
 				'style' => 'button',
 				'align' => '',
