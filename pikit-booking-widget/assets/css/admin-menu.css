@@ -1,0 +1,11 @@
+#adminmenu #toplevel_page_pikit-booking-widget .wp-menu-image img {
+	width: 20px;
+	height: auto;
+	padding: 8px 0 0;
+	opacity: 0.85;
+}
+
+#adminmenu #toplevel_page_pikit-booking-widget:hover .wp-menu-image img,
+#adminmenu #toplevel_page_pikit-booking-widget.wp-has-current-submenu .wp-menu-image img {
+	opacity: 1;
+}

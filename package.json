@@ -1,0 +1,14 @@
+{
+  "name": "pikit-booking-widget",
+  "version": "1.0.0",
+  "description": "Pikit Booking Widget WordPress plugin — development build tooling",
+  "private": true,
+  "scripts": {
+    "build": "wp-scripts build src/book-button/index.js --output-path=pikit-booking-widget/build/book-button && node scripts/postbuild-block.js",
+    "start": "wp-scripts start src/book-button/index.js --output-path=pikit-booking-widget/build/book-button",
+    "zip": "node scripts/release-zip.js"
+  },
+  "devDependencies": {
+    "@wordpress/scripts": "^30.0.0"
+  }
+}

@@ -1,0 +1,657 @@
+/**
+ * Pikit Booking Widget — admin settings UI
+ * Scoped under body.pikit-admin-page to beat wp-admin defaults.
+ */
+
+/* -------------------------------------------------------------------------
+   WordPress shell overrides
+   ------------------------------------------------------------------------- */
+
+body.pikit-admin-page #wpcontent,
+#wpcontent:has(.pikit-booking-settings) {
+	background: #fafafa;
+}
+
+body.pikit-admin-page #wpbody-content > .wrap,
+.wrap:has(> .pikit-booking-settings) {
+	margin: 0;
+	max-width: none;
+}
+
+body.pikit-admin-page #wpbody-content > .wrap > h1,
+.wrap:has(> .pikit-booking-settings) > h1 {
+	display: none !important;
+}
+
+body.pikit-admin-page #wpbody-content,
+#wpbody-content:has(.pikit-booking-settings) {
+	padding-bottom: 32px;
+}
+
+/* -------------------------------------------------------------------------
+   Page shell
+   ------------------------------------------------------------------------- */
+
+.pikit-booking-settings {
+	font-family: Lato, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+	color: #484848;
+	max-width: 1120px;
+	margin: 0 auto;
+	padding: 20px 20px 40px;
+	box-sizing: border-box;
+}
+
+.pikit-booking-settings *,
+.pikit-booking-settings *::before,
+.pikit-booking-settings *::after {
+	box-sizing: border-box;
+}
+
+/* -------------------------------------------------------------------------
+   Notices
+   ------------------------------------------------------------------------- */
+
+.pikit-booking-settings .pikit-notice {
+	border-radius: 10px;
+	padding: 12px 16px;
+	margin-bottom: 20px;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 1.4;
+}
+
+.pikit-booking-settings .pikit-notice--success {
+	background: #ecfdf5;
+	border: 1px solid #a7f3d0;
+	color: #065f46;
+}
+
+.pikit-booking-settings .notice.notice-success {
+	border-radius: 10px;
+	padding: 12px 16px;
+	margin: 0 0 20px;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 1.4;
+	background: #ecfdf5;
+	border: 1px solid #a7f3d0;
+	color: #065f46;
+}
+
+.pikit-booking-settings .notice.notice-success p {
+	margin: 0;
+	padding: 0;
+	font-size: inherit;
+}
+
+/* -------------------------------------------------------------------------
+   Hero
+   ------------------------------------------------------------------------- */
+
+.pikit-booking-settings .pikit-admin-hero {
+	margin-bottom: 28px;
+	background: #ffffff;
+	border: 1px solid rgba(227, 227, 227, 0.9);
+	border-radius: 12px;
+	box-shadow: 0 1px 2px rgba(17, 17, 17, 0.04);
+	padding: 24px 28px;
+}
+
+.pikit-booking-settings .pikit-admin-hero__inner {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 20px 28px;
+}
+
+.pikit-booking-settings .pikit-admin-hero__logo {
+	display: block;
+	height: 36px;
+	width: auto;
+	max-width: 160px;
+	flex-shrink: 0;
+}
+
+.pikit-booking-settings .pikit-admin-hero__content {
+	flex: 1 1 240px;
+	min-width: 0;
+}
+
+.pikit-booking-settings .pikit-admin-hero__title {
+	margin: 0 0 6px;
+	font-size: 22px;
+	font-weight: 700;
+	line-height: 1.25;
+	color: #111111;
+}
+
+.pikit-booking-settings .pikit-admin-hero__description {
+	margin: 0;
+	font-size: 14px;
+	line-height: 1.5;
+	color: #666666;
+	max-width: 560px;
+}
+
+/* -------------------------------------------------------------------------
+   Footer
+   ------------------------------------------------------------------------- */
+
+.pikit-booking-settings .pikit-admin-footer {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin-top: 28px;
+	padding-top: 20px;
+	border-top: 1px solid #e3e3e3;
+	font-size: 13px;
+	color: #666666;
+}
+
+.pikit-booking-settings .pikit-admin-footer__logo {
+	display: block;
+	flex-shrink: 0;
+	opacity: 0.9;
+}
+
+.pikit-booking-settings .pikit-admin-footer a {
+	color: #054ada;
+	text-decoration: none;
+	font-weight: 600;
+}
+
+.pikit-booking-settings .pikit-admin-footer a:hover {
+	text-decoration: underline;
+}
+
+/* -------------------------------------------------------------------------
+   Layout
+   ------------------------------------------------------------------------- */
+
+.pikit-booking-settings .pikit-admin-layout {
+	display: grid;
+	grid-template-columns: minmax(260px, 320px) minmax(0, 1fr);
+	gap: 24px;
+	align-items: start;
+}
+
+@media (max-width: 960px) {
+	.pikit-booking-settings .pikit-admin-layout {
+		grid-template-columns: 1fr;
+	}
+}
+
+.pikit-booking-settings .pikit-admin-main {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+/* -------------------------------------------------------------------------
+   Callout
+   ------------------------------------------------------------------------- */
+
+.pikit-booking-settings .pikit-callout {
+	border-radius: 12px;
+	padding: 16px 18px;
+	border: 1px solid #fcd34d;
+	background: #fffbeb;
+}
+
+.pikit-booking-settings .pikit-callout__title {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	font-size: 14px;
+	font-weight: 600;
+	color: #92400e;
+	margin-bottom: 10px;
+}
+
+.pikit-booking-settings .pikit-callout__list {
+	margin: 0 0 16px 18px;
+	padding: 0;
+	font-size: 13px;
+	line-height: 1.55;
+	color: #78350f;
+}
+
+.pikit-booking-settings .pikit-callout__list li {
+	margin-bottom: 6px;
+}
+
+/* -------------------------------------------------------------------------
+   Cards
+   ------------------------------------------------------------------------- */
+
+.pikit-booking-settings .pikit-card {
+	background: #ffffff;
+	border: 1px solid rgba(227, 227, 227, 0.9);
+	border-radius: 12px;
+	box-shadow: 0 1px 2px rgba(17, 17, 17, 0.04);
+	padding: 20px 24px;
+}
+
+.pikit-booking-settings .pikit-card__header {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	gap: 14px;
+	margin-bottom: 20px;
+}
+
+.pikit-booking-settings .pikit-card__header > div:nth-child(2) {
+	flex: 1 1 200px;
+	min-width: 0;
+}
+
+.pikit-booking-settings .pikit-card__icon {
+	flex-shrink: 0;
+	width: 48px;
+	height: 48px;
+	border-radius: 12px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.pikit-booking-settings .pikit-card__icon--primary {
+	background: rgba(5, 74, 218, 0.1);
+	color: #054ada;
+}
+
+.pikit-booking-settings .pikit-card__icon--muted {
+	background: #f1f1f1;
+	color: #666666;
+}
+
+.pikit-booking-settings .pikit-card__title {
+	margin: 0 0 4px;
+	font-size: 18px;
+	font-weight: 600;
+	line-height: 1.3;
+	color: #111111;
+}
+
+.pikit-booking-settings .pikit-card__subtitle {
+	margin: 0;
+	font-size: 14px;
+	line-height: 1.45;
+	color: #666666;
+}
+
+.pikit-booking-settings .pikit-card__body {
+	margin-top: 4px;
+}
+
+.pikit-booking-settings .pikit-card__footer {
+	margin-top: 20px;
+	padding-top: 20px;
+	border-top: 1px solid #f1f1f1;
+}
+
+.pikit-booking-settings .pikit-card__actions {
+	margin-top: 14px;
+}
+
+.pikit-booking-settings .pikit-field-label {
+	font-size: 12px;
+	font-weight: 500;
+	color: #666666;
+	margin: 0 0 6px;
+}
+
+/* -------------------------------------------------------------------------
+   Form fields (high specificity vs wp-admin)
+   ------------------------------------------------------------------------- */
+
+.pikit-booking-settings .pikit-field-grid {
+	display: grid;
+	gap: 18px;
+}
+
+.pikit-booking-settings .pikit-field {
+	min-width: 0;
+}
+
+.pikit-booking-settings .pikit-label {
+	display: block;
+	margin-bottom: 6px;
+	font-size: 13px;
+	font-weight: 600;
+	color: #333333;
+}
+
+.pikit-booking-settings .pikit-input,
+.pikit-booking-settings .pikit-select,
+.pikit-booking-settings input.pikit-input,
+.pikit-booking-settings select.pikit-select {
+	display: block;
+	width: 100%;
+	max-width: 480px;
+	height: auto;
+	min-height: 42px;
+	font-family: Lato, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+	font-size: 14px;
+	line-height: 1.4;
+	color: #333333;
+	background: #ffffff;
+	background-image: none;
+	border: 1px solid #e3e3e3;
+	border-radius: 8px;
+	padding: 10px 12px;
+	margin: 0;
+	box-shadow: none;
+	transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.pikit-booking-settings .pikit-input:focus,
+.pikit-booking-settings .pikit-select:focus {
+	border-color: #054ada;
+	box-shadow: 0 0 0 1px #054ada;
+	outline: none;
+}
+
+.pikit-booking-settings .pikit-help {
+	margin: 6px 0 0;
+	font-size: 12px;
+	line-height: 1.45;
+	color: #929292;
+}
+
+.pikit-booking-settings .pikit-link {
+	font-size: 14px;
+	color: #054ada;
+	text-decoration: none;
+	word-break: break-all;
+}
+
+.pikit-booking-settings .pikit-link:hover {
+	text-decoration: underline;
+	color: #054ada;
+}
+
+.pikit-booking-settings .pikit-list {
+	margin: 0;
+	padding-left: 18px;
+	font-size: 14px;
+	line-height: 1.55;
+	color: #484848;
+}
+
+.pikit-booking-settings .pikit-list li {
+	margin-bottom: 8px;
+}
+
+.pikit-booking-settings .pikit-code-inline {
+	background: #f1f1f1;
+	border-radius: 4px;
+	padding: 2px 6px;
+	font-size: 12px;
+	color: #333333;
+}
+
+.pikit-booking-settings .pikit-code-block {
+	margin: 0;
+	background: #fafafa;
+	border: 1px solid #e3e3e3;
+	border-radius: 12px;
+	padding: 16px;
+	font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+	font-size: 12px;
+	line-height: 1.55;
+	color: #333333;
+	white-space: pre-wrap;
+	word-break: break-word;
+	overflow-x: auto;
+}
+
+/* -------------------------------------------------------------------------
+   Buttons (override #submit and .button)
+   ------------------------------------------------------------------------- */
+
+.pikit-booking-settings .pikit-btn,
+.pikit-booking-settings button.pikit-btn,
+.pikit-booking-settings a.pikit-btn,
+.pikit-booking-settings #submit.pikit-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 6px;
+	font-family: Lato, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 1.25;
+	border-radius: 8px;
+	padding: 10px 16px;
+	border: 1px solid transparent;
+	cursor: pointer;
+	text-decoration: none;
+	text-shadow: none;
+	box-shadow: none;
+	height: auto;
+	min-height: 0;
+	transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.pikit-booking-settings .pikit-btn--sm {
+	font-size: 13px;
+	padding: 8px 14px;
+}
+
+.pikit-booking-settings .pikit-btn--primary,
+.pikit-booking-settings #submit.pikit-btn--primary {
+	background: #054ada;
+	color: #ffffff;
+	border-color: #054ada;
+}
+
+.pikit-booking-settings .pikit-btn--primary:hover,
+.pikit-booking-settings .pikit-btn--primary:focus,
+.pikit-booking-settings #submit.pikit-btn--primary:hover,
+.pikit-booking-settings #submit.pikit-btn--primary:focus {
+	background: #0439b0;
+	border-color: #0439b0;
+	color: #ffffff;
+}
+
+.pikit-booking-settings .pikit-btn--dark {
+	background: #111111;
+	color: #ffffff;
+	border-color: #111111;
+}
+
+.pikit-booking-settings .pikit-btn--dark:hover,
+.pikit-booking-settings .pikit-btn--dark:focus {
+	background: #333333;
+	border-color: #333333;
+	color: #ffffff;
+}
+
+.pikit-booking-settings .pikit-btn--outline {
+	background: #ffffff;
+	color: #484848;
+	border-color: #e3e3e3;
+}
+
+.pikit-booking-settings .pikit-btn--outline:hover,
+.pikit-booking-settings .pikit-btn--outline:focus {
+	background: #fafafa;
+	border-color: #d1d5db;
+	color: #111111;
+}
+
+.pikit-booking-settings .pikit-btn__icon {
+	font-size: 13px;
+	line-height: 1;
+}
+
+/* -------------------------------------------------------------------------
+   Toggle switch
+   ------------------------------------------------------------------------- */
+
+.pikit-booking-settings .pikit-switch {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	margin-left: auto;
+	flex-shrink: 0;
+	cursor: pointer;
+}
+
+.pikit-booking-settings .pikit-switch input {
+	position: absolute;
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
+
+.pikit-booking-settings .pikit-switch__track {
+	width: 44px;
+	height: 24px;
+	background: #e3e3e3;
+	border-radius: 999px;
+	transition: background-color 0.2s ease;
+	position: relative;
+}
+
+.pikit-booking-settings .pikit-switch__track::after {
+	content: "";
+	position: absolute;
+	top: 3px;
+	left: 3px;
+	width: 18px;
+	height: 18px;
+	background: #ffffff;
+	border-radius: 50%;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+	transition: transform 0.2s ease;
+}
+
+.pikit-booking-settings .pikit-switch input:checked + .pikit-switch__track {
+	background: #054ada;
+}
+
+.pikit-booking-settings .pikit-switch input:checked + .pikit-switch__track::after {
+	transform: translateX(20px);
+}
+
+.pikit-booking-settings .pikit-switch input:focus-visible + .pikit-switch__track {
+	box-shadow: 0 0 0 2px rgba(5, 74, 218, 0.35);
+}
+
+/* -------------------------------------------------------------------------
+   Simple icons (CSS shapes)
+   ------------------------------------------------------------------------- */
+
+.pikit-booking-settings .pikit-icon {
+	display: inline-block;
+	width: 22px;
+	height: 22px;
+	position: relative;
+}
+
+.pikit-booking-settings .pikit-icon--globe::before {
+	content: "";
+	position: absolute;
+	inset: 2px;
+	border: 2px solid currentColor;
+	border-radius: 50%;
+}
+
+.pikit-booking-settings .pikit-icon--globe::after {
+	content: "";
+	position: absolute;
+	top: 4px;
+	left: 50%;
+	width: 2px;
+	height: 14px;
+	background: currentColor;
+	transform: translateX(-50%);
+}
+
+.pikit-booking-settings .pikit-icon--link::before {
+	content: "";
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	border: 2px solid currentColor;
+	border-radius: 3px;
+	top: 8px;
+	left: 2px;
+	transform: rotate(-12deg);
+}
+
+.pikit-booking-settings .pikit-icon--link::after {
+	content: "";
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	border: 2px solid currentColor;
+	border-radius: 3px;
+	bottom: 2px;
+	right: 2px;
+	transform: rotate(-12deg);
+}
+
+.pikit-booking-settings .pikit-icon--code::before,
+.pikit-booking-settings .pikit-icon--code::after {
+	content: "";
+	position: absolute;
+	width: 8px;
+	height: 8px;
+	border-top: 2px solid currentColor;
+	border-right: 2px solid currentColor;
+}
+
+.pikit-booking-settings .pikit-icon--code::before {
+	top: 6px;
+	left: 3px;
+	transform: rotate(-45deg);
+}
+
+.pikit-booking-settings .pikit-icon--code::after {
+	bottom: 4px;
+	right: 3px;
+	transform: rotate(135deg);
+}
+
+.pikit-booking-settings .pikit-icon--button {
+	border: 2px solid currentColor;
+	border-radius: 6px;
+	width: 20px;
+	height: 14px;
+	top: 4px;
+	left: 1px;
+}
+
+.pikit-booking-settings .pikit-icon--info::before {
+	content: "i";
+	font-style: italic;
+	font-weight: 700;
+	font-size: 14px;
+	line-height: 22px;
+	text-align: center;
+	width: 22px;
+	display: block;
+}
+
+/* -------------------------------------------------------------------------
+   Front-end book button
+   ------------------------------------------------------------------------- */
+
+.pikit-book-button-wrap {
+	display: block;
+}
+
+.pikit-book-button-wrap--left {
+	text-align: left;
+}
+
+.pikit-book-button-wrap--right {
+	text-align: right;
+}
+
+.pikit-book-button-wrap--center {
+	text-align: center;
+}
