@@ -125,15 +125,17 @@ class Pikit_Booking_Block {
 				$processor->set_attribute( 'id', 'pikit-open' );
 			}
 
-			return $processor->get_updated_html();
+			return wp_kses_post( $processor->get_updated_html() );
 		}
 
-		return preg_replace(
+		$updated = preg_replace(
 			'/<a\s+/i',
 			'<a id="pikit-open" href="#pikit-open" ',
 			$content,
 			1
 		);
+
+		return wp_kses_post( $updated );
 	}
 
 	/**

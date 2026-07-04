@@ -4,7 +4,7 @@ Tags: booking, appointment, calendar, salon, scheduling
 Requires at least: 6.1
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -115,6 +115,9 @@ This plugin connects to **Pikit** services to provide online booking.
 
 == Changelog ==
 
+= 1.0.1 =
+* Escaped block render output (`wp_kses_post()`) for both the current and legacy Pikit Button block render callbacks.
+
 = 1.0.0 =
 * Initial public release.
 * Official Pikit embed script injection with SEO-friendly and fast-load modes.
@@ -126,6 +129,9 @@ This plugin connects to **Pikit** services to provide online booking.
 * Uninstall cleanup of plugin settings.
 
 == Upgrade Notice ==
+
+= 1.0.1 =
+Escaping fix for the Pikit Button block render output. No action required.
 
 = 1.0.0 =
 Initial release of Pikit Booking Widget for WordPress.

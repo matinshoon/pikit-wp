@@ -11,7 +11,7 @@
  * Plugin Name:       Pikit Booking Widget
  * Plugin URI:        https://wordpress.org/plugins/pikit-widget/
  * Description:       Embed the Pikit online booking widget on your WordPress site with a Gutenberg block, Elementor widget, WPBakery element, and shortcode.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Requires at least: 6.1
  * Requires PHP:      7.4
  * Author:            Pikit
@@ -23,7 +23,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'PIKIT_BOOKING_WIDGET_VERSION', '1.0.0' );
+define( 'PIKIT_BOOKING_WIDGET_VERSION', '1.0.1' );
 define( 'PIKIT_BOOKING_WIDGET_FILE', __FILE__ );
 define( 'PIKIT_BOOKING_WIDGET_DIR', plugin_dir_path( __FILE__ ) );
 define( 'PIKIT_BOOKING_WIDGET_URL', plugin_dir_url( __FILE__ ) );
