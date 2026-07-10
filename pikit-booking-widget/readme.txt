@@ -116,6 +116,7 @@ This plugin connects to **Pikit** services to provide online booking.
 == Changelog ==
 
 = 1.0.1 =
+* Fix fatal error on the plugin settings page when no installation code is saved (sprintf format string).
 * Escaped block render output (`wp_kses_post()`) for both the current and legacy Pikit Button block render callbacks.
 
 = 1.0.0 =
@@ -131,7 +132,7 @@ This plugin connects to **Pikit** services to provide online booking.
 == Upgrade Notice ==
 
 = 1.0.1 =
-Escaping fix for the Pikit Button block render output. No action required.
+Fixes a fatal error on the plugin settings page. No action required.
 
 = 1.0.0 =
 Initial release of Pikit Booking Widget for WordPress.

@@ -134,10 +134,11 @@ final class Pikit_Booking_Plugin {
 		$token     = self::sanitize_installation_code( $installation_code );
 		$load_type = in_array( $load_type, array( 'SEO_FRIENDLY', 'FAST_LOAD' ), true ) ? $load_type : 'SEO_FRIENDLY';
 
+		// Single-quoted format string: %1$s must not appear in double quotes (PHP interpolates $s).
 		return sprintf(
-			"window.PIKIT_TOKEN = '%1$s';\nwindow.LOAD_TYPE = '%2$s';\n// Enqueued script: %3$s",
-			esc_js( $token ),
-			esc_js( $load_type ),
+			'window.PIKIT_TOKEN = %1$s;' . "\n" . 'window.LOAD_TYPE = %2$s;' . "\n" . '// Enqueued script: %3$s',
+			wp_json_encode( $token, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE ),
+			wp_json_encode( $load_type, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE ),
 			PIKIT_WIDGET_LOADER_URL
 		);
 	}
