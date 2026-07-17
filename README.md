@@ -6,13 +6,19 @@ The **installable plugin** lives in [`pikit-booking-widget/`](pikit-booking-widg
 
 ## WordPress.org release
 
-**Version:** 1.0.0
+**Approved** — slug [`pikit-widget`](https://wordpress.org/plugins/pikit-widget/)  
+**Version:** 1.0.1  
+**SVN:** https://plugins.svn.wordpress.org/pikit-widget
 
-Before submitting to the [WordPress Plugin Directory](https://wordpress.org/plugins/):
+Publish / update:
 
-1. Run `npm run build && npm run zip`
-2. Prepare icons, banner, and screenshots (see [`wordpress-org/assets/README.md`](wordpress-org/assets/README.md))
-3. Follow [`wordpress-org/SUBMISSION.md`](wordpress-org/SUBMISSION.md)
+```powershell
+npm run build
+npm run zip
+npm run svn:publish
+```
+
+Full steps (SVN password, assets, screenshots): [`wordpress-org/PUBLISH.md`](wordpress-org/PUBLISH.md)
 
 The distributable zip is `dist/pikit-booking-widget.zip`.
 

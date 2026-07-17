@@ -1,6 +1,10 @@
 # WordPress.org plugin directory assets
 
-These files are **not** included inside the plugin ZIP. They are uploaded separately to the plugin **SVN `assets/` folder** on WordPress.org after your plugin is approved.
+These files are **not** included inside the plugin ZIP. They are uploaded separately to the plugin **SVN `assets/` folder** on WordPress.org.
+
+**Live SVN:** https://plugins.svn.wordpress.org/pikit-widget/assets/
+
+Icons and banners are prepared in this folder. Add **screenshots** from real UI, then run `npm run svn:publish` (see [`../PUBLISH.md`](../PUBLISH.md)).
 
 ## Required before making the plugin public
 

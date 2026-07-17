@@ -7,3 +7,4 @@ Thumbs.db
 .vscode/
 dist/
 *.zip
+svn-pikit-widget/

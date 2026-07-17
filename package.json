@@ -6,7 +6,8 @@
   "scripts": {
     "build": "wp-scripts build src/book-button/index.js --output-path=pikit-booking-widget/build/book-button && node scripts/postbuild-block.js",
     "start": "wp-scripts start src/book-button/index.js --output-path=pikit-booking-widget/build/book-button",
-    "zip": "node scripts/release-zip.js"
+    "zip": "node scripts/release-zip.js",
+    "svn:publish": "powershell -NoProfile -ExecutionPolicy Bypass -File ./scripts/svn-publish.ps1"
   },
   "devDependencies": {
     "@wordpress/scripts": "^30.0.0"
