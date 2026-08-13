@@ -22,7 +22,7 @@ if (-not (Test-Path $WorkDir)) {
 Set-Location $WorkDir
 
 Write-Host "Committing trunk + assets as $Username ..."
-& $Svn commit -m "Release $Version: publish Pikit Booking Widget" --username $Username
+& $Svn commit -m "Release ${Version}: publish Pikit Booking Widget" --username $Username
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
 $TagPath = "tags/$Version"

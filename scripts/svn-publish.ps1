@@ -104,7 +104,7 @@ try {
 	& $Svn add --force assets
 
 	Write-Host "Committing trunk + assets..."
-	& $Svn commit -m "Release $Version: publish Pikit Booking Widget" --username $Username
+	& $Svn commit -m "Release ${Version}: publish Pikit Booking Widget" --username $Username
 
 	$TagPath = "tags/$Version"
 	if (Test-Path (Join-Path $WorkDir $TagPath)) {
