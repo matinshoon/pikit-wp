@@ -26,6 +26,19 @@ svn --version
 
 If missing, install TortoiseSVN and ensure “command line client tools” is enabled, then **restart the terminal**.
 
+## Publish version 1.0.2 (WordPress 7.1 compatibility)
+
+From the repo root:
+
+```powershell
+cd C:\Users\user\Documents\GitHub\pikit-wp
+npm run build
+npm run zip
+.\scripts\svn-publish.ps1 -Username pikit -Version 1.0.2
+```
+
+This tags `1.0.2` so the directory reads **Tested up to: 7.1** from the stable tag (trunk-only readme edits are ignored while Stable tag stays `1.0.1`).
+
 ## Publish version 1.0.1 (code)
 
 From the repo root:
@@ -87,4 +100,4 @@ Put screenshots in `wordpress-org/assets/` then re-run `.\scripts\svn-publish.ps
 1. Bump version in `pikit-booking-widget.php` **and** `Stable tag` in `readme.txt` (must match)  
 2. Add changelog entry  
 3. `npm run build && npm run zip`  
-4. `.\scripts\svn-publish.ps1 -Version 1.0.2`
+4. `.\scripts\svn-publish.ps1 -Version 1.0.3`

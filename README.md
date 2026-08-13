@@ -7,7 +7,7 @@ The **installable plugin** lives in [`pikit-booking-widget/`](pikit-booking-widg
 ## WordPress.org release
 
 **Approved** — slug [`pikit-widget`](https://wordpress.org/plugins/pikit-widget/)  
-**Version:** 1.0.1  
+**Version:** 1.0.2  
 **SVN:** https://plugins.svn.wordpress.org/pikit-widget
 
 Publish / update:

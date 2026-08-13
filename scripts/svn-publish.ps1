@@ -3,11 +3,11 @@
 # Usage (from repo root):
 #   .\scripts\svn-publish.ps1
 # Optional:
-#   .\scripts\svn-publish.ps1 -Username pikit -Version 1.0.1
+#   .\scripts\svn-publish.ps1 -Username pikit -Version 1.0.2
 
 param(
 	[string]$Username = "pikit",
-	[string]$Version = "1.0.1",
+	[string]$Version = "1.0.2",
 	[string]$SvnUrl = "https://plugins.svn.wordpress.org/pikit-widget",
 	[string]$WorkDir = ""
 )
