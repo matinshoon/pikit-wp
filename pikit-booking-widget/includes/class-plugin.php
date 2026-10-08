@@ -41,6 +41,7 @@ final class Pikit_Booking_Plugin {
 	 * Load required files.
 	 */
 	private function load_dependencies() {
+		require_once PIKIT_BOOKING_WIDGET_DIR . 'includes/class-booking-target.php';
 		require_once PIKIT_BOOKING_WIDGET_DIR . 'includes/class-book-button-renderer.php';
 		require_once PIKIT_BOOKING_WIDGET_DIR . 'includes/class-settings.php';
 		require_once PIKIT_BOOKING_WIDGET_DIR . 'includes/class-embed.php';

@@ -27,15 +27,17 @@ class Pikit_Book_Button_Renderer {
 	 *     @type string $class  Additional CSS classes.
 	 *     @type string $style  `button` or `link`.
 	 *     @type string $align  Wrapper alignment class suffix.
+	 *     @type array  $target Optional page to open: step, branch, service, provider, category.
 	 * }
 	 * @return string Escaped HTML.
 	 */
 	public static function render( array $args = array() ): string {
 		$defaults = array(
-			'text'  => __( 'Book now', 'pikit-widget' ),
-			'class' => self::DEFAULT_CLASS,
-			'style' => 'button',
-			'align' => '',
+			'text'   => __( 'Book now', 'pikit-widget' ),
+			'class'  => self::DEFAULT_CLASS,
+			'style'  => 'button',
+			'align'  => '',
+			'target' => array(),
 		);
 
 		$args = wp_parse_args( $args, $defaults );
@@ -44,6 +46,7 @@ class Pikit_Book_Button_Renderer {
 		$class = self::sanitize_classes( $args['class'] );
 		$style = $args['style'] === 'link' ? 'link' : 'button';
 		$align = sanitize_html_class( $args['align'] );
+		$data  = Pikit_Booking_Target::get_attributes_html( $args['target'] );
 
 		$wrapper_class = 'pikit-book-button-wrap';
 		if ( $align ) {
@@ -54,15 +57,17 @@ class Pikit_Book_Button_Renderer {
 
 		if ( 'link' === $style ) {
 			$inner = sprintf(
-				'<a href="#pikit-open" class="%1$s">%2$s</a>',
+				'<a href="#pikit-open"%3$s class="%1$s">%2$s</a>',
 				esc_attr( $class ),
-				esc_html( $text )
+				esc_html( $text ),
+				$data
 			);
 		} else {
 			$inner = sprintf(
-				'<button type="button" id="pikit-open" class="%1$s">%2$s</button>',
+				'<button type="button"%3$s class="%1$s">%2$s</button>',
 				esc_attr( $class ),
-				esc_html( $text )
+				esc_html( $text ),
+				$data
 			);
 		}
 

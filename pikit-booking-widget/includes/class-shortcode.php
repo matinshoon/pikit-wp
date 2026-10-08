@@ -43,10 +43,15 @@ class Pikit_Booking_Shortcode {
 	public function render_shortcode( $atts ) {
 		$atts = shortcode_atts(
 			array(
-				'text'  => __( 'Book now', 'pikit-widget' ),
-				'class' => Pikit_Book_Button_Renderer::DEFAULT_CLASS,
-				'style' => 'button',
-				'align' => '',
+				'text'     => __( 'Book now', 'pikit-widget' ),
+				'class'    => Pikit_Book_Button_Renderer::DEFAULT_CLASS,
+				'style'    => 'button',
+				'align'    => '',
+				'step'     => '',
+				'branch'   => '',
+				'service'  => '',
+				'provider' => '',
+				'category' => '',
 			),
 			$atts,
 			'pikit_book_button'
@@ -54,10 +59,17 @@ class Pikit_Booking_Shortcode {
 
 		return Pikit_Book_Button_Renderer::render(
 			array(
-				'text'  => $atts['text'],
-				'class' => $atts['class'],
-				'style' => $atts['style'],
-				'align' => $atts['align'],
+				'text'   => $atts['text'],
+				'class'  => $atts['class'],
+				'style'  => $atts['style'],
+				'align'  => $atts['align'],
+				'target' => array(
+					'step'     => $atts['step'],
+					'branch'   => $atts['branch'],
+					'service'  => $atts['service'],
+					'provider' => $atts['provider'],
+					'category' => $atts['category'],
+				),
 			)
 		);
 	}
