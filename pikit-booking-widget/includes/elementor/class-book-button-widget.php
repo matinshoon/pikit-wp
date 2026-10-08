@@ -111,6 +111,8 @@ class Pikit_Elementor_Book_Button_Widget extends Widget_Base {
 
 		$this->end_controls_section();
 
+		$this->register_target_controls();
+
 		$this->start_controls_section(
 			'section_style',
 			array(
@@ -120,6 +122,60 @@ class Pikit_Elementor_Book_Button_Widget extends Widget_Base {
 		);
 
 		$this->register_button_style_controls();
+
+		$this->end_controls_section();
+	}
+
+	/**
+	 * "Open widget at" controls: page and optional IDs.
+	 */
+	private function register_target_controls() {
+		$this->start_controls_section(
+			'section_target',
+			array(
+				'label' => __( 'Open widget at', 'pikit-widget' ),
+			)
+		);
+
+		$this->add_control(
+			'pikit_step',
+			array(
+				'label'   => __( 'Page', 'pikit-widget' ),
+				'type'    => Controls_Manager::SELECT,
+				'default' => '',
+				'options' => array( '' => __( 'Default (first page)', 'pikit-widget' ) ) + Pikit_Booking_Target::get_steps(),
+			)
+		);
+
+		$id_controls = array(
+			'pikit_branch'   => __( 'Location ID', 'pikit-widget' ),
+			'pikit_category' => __( 'Category ID', 'pikit-widget' ),
+			'pikit_provider' => __( 'Provider ID', 'pikit-widget' ),
+			'pikit_service'  => __( 'Service ID', 'pikit-widget' ),
+		);
+
+		foreach ( $id_controls as $name => $label ) {
+			$this->add_control(
+				$name,
+				array(
+					'label'   => $label,
+					'type'    => Controls_Manager::TEXT,
+					'default' => '',
+					'ai'      => array(
+						'active' => false,
+					),
+				)
+			);
+		}
+
+		$this->add_control(
+			'pikit_target_info',
+			array(
+				'type'            => Controls_Manager::RAW_HTML,
+				'raw'             => esc_html__( 'All fields are optional. Copy IDs from your Pikit dashboard. Leave empty to open the default first page.', 'pikit-widget' ),
+				'content_classes' => 'elementor-panel-alert elementor-panel-alert-info',
+			)
+		);
 
 		$this->end_controls_section();
 	}
@@ -171,7 +227,15 @@ class Pikit_Elementor_Book_Button_Widget extends Widget_Base {
 				'nofollow'    => false,
 			)
 		);
-		$instance->add_render_attribute( 'button', 'id', 'pikit-open' );
+
+		$target = array(
+			'step'     => isset( $settings['pikit_step'] ) ? $settings['pikit_step'] : '',
+			'branch'   => isset( $settings['pikit_branch'] ) ? $settings['pikit_branch'] : '',
+			'service'  => isset( $settings['pikit_service'] ) ? $settings['pikit_service'] : '',
+			'provider' => isset( $settings['pikit_provider'] ) ? $settings['pikit_provider'] : '',
+			'category' => isset( $settings['pikit_category'] ) ? $settings['pikit_category'] : '',
+		);
+		$instance->add_render_attribute( 'button', Pikit_Booking_Target::get_attributes( $target ) );
 
 		if ( ! empty( $settings['size'] ) ) {
 			$instance->add_render_attribute( 'button', 'class', 'elementor-size-' . $settings['size'] );
@@ -216,7 +280,7 @@ class Pikit_Elementor_Book_Button_Widget extends Widget_Base {
 		}
 
 		view.addRenderAttribute( 'button', 'href', '#pikit-open' );
-		view.addRenderAttribute( 'button', 'id', 'pikit-open' );
+		view.addRenderAttribute( 'button', 'data-pikit-open', '' );
 
 		if ( '' !== settings.size ) {
 			view.addRenderAttribute( 'button', 'class', 'elementor-size-' + settings.size );

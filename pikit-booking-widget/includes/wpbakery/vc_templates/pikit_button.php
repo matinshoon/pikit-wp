@@ -41,6 +41,11 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var string $i_icon_pixelicons
  * @var string $css_animation
  * @var string $css
+ * @var string $pikit_step
+ * @var string $pikit_branch
+ * @var string $pikit_service
+ * @var string $pikit_provider
+ * @var string $pikit_category
  * @var string $gradient_color_1
  * @var string $gradient_color_2
  * @var string $gradient_custom_color_1
@@ -50,6 +55,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 
 $style = $shape = $color = $size = $custom_background = $custom_text = $align = $title = $button_block = $el_class = $outline_custom_color = $outline_custom_hover_background = $outline_custom_hover_text = $add_icon = $i_align = $i_type = $i_icon_entypo = $i_icon_fontawesome = $i_icon_linecons = $i_icon_pixelicons = $i_icon_typicons = $css = $css_animation = '';
+$pikit_step = $pikit_branch = $pikit_service = $pikit_provider = $pikit_category = '';
 $gradient_color_1 = $gradient_color_2 = $gradient_custom_color_1 = $gradient_custom_color_2 = $gradient_text_color = '';
 $a_href = $a_title = $a_target = $a_rel = '';
 $styles = array();
@@ -215,7 +221,17 @@ if ( $button_classes ) {
 }
 
 $attributes[] = 'href="' . esc_url( $a_href ) . '"';
-$attributes[] = 'id="pikit-open"';
+$attributes[] = trim(
+	Pikit_Booking_Target::get_attributes_html(
+		array(
+			'step'     => $pikit_step,
+			'branch'   => $pikit_branch,
+			'service'  => $pikit_service,
+			'provider' => $pikit_provider,
+			'category' => $pikit_category,
+		)
+	)
+);
 
 $attributes = implode( ' ', $attributes );
 

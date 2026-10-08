@@ -148,7 +148,50 @@ class Pikit_Booking_WPBakery {
 			$filtered[] = $param;
 		}
 
-		return $filtered;
+		return array_merge( $filtered, $this->get_target_params() );
+	}
+
+	/**
+	 * "Open widget at" params, shown in their own tab.
+	 *
+	 * @return array
+	 */
+	private function get_target_params() {
+		$group = __( 'Open widget at', 'pikit-widget' );
+		$steps = array( __( 'Default (first page)', 'pikit-widget' ) => '' );
+
+		foreach ( Pikit_Booking_Target::get_steps() as $slug => $label ) {
+			$steps[ $label ] = $slug;
+		}
+
+		$params = array(
+			array(
+				'type'       => 'dropdown',
+				'heading'    => __( 'Page', 'pikit-widget' ),
+				'param_name' => 'pikit_step',
+				'value'      => $steps,
+				'group'      => $group,
+			),
+		);
+
+		$id_params = array(
+			'pikit_branch'   => __( 'Location ID', 'pikit-widget' ),
+			'pikit_category' => __( 'Category ID', 'pikit-widget' ),
+			'pikit_provider' => __( 'Provider ID', 'pikit-widget' ),
+			'pikit_service'  => __( 'Service ID', 'pikit-widget' ),
+		);
+
+		foreach ( $id_params as $name => $heading ) {
+			$params[] = array(
+				'type'        => 'textfield',
+				'heading'     => $heading,
+				'param_name'  => $name,
+				'description' => __( 'Optional. Copy the ID from your Pikit dashboard.', 'pikit-widget' ),
+				'group'       => $group,
+			);
+		}
+
+		return $params;
 	}
 
 	/**
@@ -157,7 +200,7 @@ class Pikit_Booking_WPBakery {
 	 * @return array
 	 */
 	private function get_fallback_params() {
-		return array(
+		$params = array(
 			array(
 				'type'        => 'textfield',
 				'heading'     => __( 'Text', 'pikit-widget' ),
@@ -183,6 +226,8 @@ class Pikit_Booking_WPBakery {
 				'value'       => Pikit_Book_Button_Renderer::DEFAULT_CLASS,
 			),
 		);
+
+		return array_merge( $params, $this->get_target_params() );
 	}
 
 	/**
@@ -238,6 +283,11 @@ class Pikit_Booking_WPBakery {
 				'text'      => '',
 				'el_class'  => Pikit_Book_Button_Renderer::DEFAULT_CLASS,
 				'align'     => 'left',
+				'pikit_step'     => '',
+				'pikit_branch'   => '',
+				'pikit_service'  => '',
+				'pikit_provider' => '',
+				'pikit_category' => '',
 			),
 			$atts,
 			self::SHORTCODE_BASE
@@ -254,6 +304,13 @@ class Pikit_Booking_WPBakery {
 				'class' => $atts['el_class'],
 				'style' => 'button',
 				'align' => $atts['align'],
+				'target' => array(
+					'step'     => $atts['pikit_step'],
+					'branch'   => $atts['pikit_branch'],
+					'service'  => $atts['pikit_service'],
+					'provider' => $atts['pikit_provider'],
+					'category' => $atts['pikit_category'],
+				),
 			)
 		);
 	}
