@@ -79,6 +79,21 @@ Yes. Search for **Pikit Button** in the Elementor widget panel or WPBakery eleme
 * `class` — CSS classes on the trigger element
 * `align` — wrapper alignment: `left`, `center`, or `right`
 
+= How do I open the widget on a specific page, such as a single service? =
+
+Add the optional attributes to the shortcode, or use the **Open widget at** panel in the Pikit Button block and the Elementor and WPBakery buttons:
+
+`[pikit_book_button text="Book a haircut" service="SERVICE_ID"]`
+`[pikit_book_button text="Our services" step="services" branch="LOCATION_ID"]`
+
+* `step` — `type`, `location`, `services`, `login`, `signup`, `customer-area`, `history`, `gift-card`, `shop`, or `membership`
+* `branch` — location ID
+* `service` — service ID
+* `provider` — provider ID
+* `category` — category ID
+
+Copy IDs from your Pikit dashboard. All attributes are optional, and an unknown ID opens the default first page. Existing buttons keep working without changes.
+
 = Does this plugin work without Elementor or WPBakery? =
 
 Yes. The Gutenberg block and shortcode work on any theme. Elementor and WPBakery integrations load only when those plugins are active.
@@ -114,6 +129,10 @@ This plugin connects to **Pikit** services to provide online booking.
 * Privacy policy: https://pikit.io/privacy
 
 == Changelog ==
+
+= 1.1.0 (unreleased) =
+* New: open the booking widget on a specific page (step, location, service, provider, or category) from the shortcode, the Pikit Button block, and the Elementor and WPBakery buttons.
+* Buttons now use a `data-pikit-open` attribute instead of a duplicated `id="pikit-open"`. Existing `#pikit-open` links keep working.
 
 = 1.0.2 =
 * Confirmed compatibility with WordPress 7.1 (iframed post editor, persistent editor toolbar, and @wordpress/components updates).
