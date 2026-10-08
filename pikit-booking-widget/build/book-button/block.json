@@ -33,6 +33,26 @@
     },
     "fontSize": {
       "type": "string"
+    },
+    "step": {
+      "type": "string",
+      "default": ""
+    },
+    "branch": {
+      "type": "string",
+      "default": ""
+    },
+    "service": {
+      "type": "string",
+      "default": ""
+    },
+    "provider": {
+      "type": "string",
+      "default": ""
+    },
+    "category": {
+      "type": "string",
+      "default": ""
     }
   },
   "supports": {

@@ -23,7 +23,13 @@ import {
 	__experimentalGetShadowClassesAndStyles as getShadowClassesAndStyles,
 	__experimentalGetElementClassName,
 } from '@wordpress/block-editor';
-import { PanelBody, Button, ButtonGroup } from '@wordpress/components';
+import {
+	PanelBody,
+	Button,
+	ButtonGroup,
+	SelectControl,
+	TextControl,
+} from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import metadata from './block.json';
 import './editor.scss';
@@ -31,6 +37,37 @@ import './style.scss';
 
 const PIKIT_TRIGGER_HREF = '#pikit-open';
 const PIKIT_TRIGGER_ID = 'pikit-open';
+
+const PIKIT_STEPS = [
+	{ value: '', label: __( 'Default (first page)', 'pikit-widget' ) },
+	{ value: 'type', label: __( 'Appointment type', 'pikit-widget' ) },
+	{ value: 'location', label: __( 'Location', 'pikit-widget' ) },
+	{ value: 'services', label: __( 'Services', 'pikit-widget' ) },
+	{ value: 'login', label: __( 'Log in', 'pikit-widget' ) },
+	{ value: 'signup', label: __( 'Sign up', 'pikit-widget' ) },
+	{ value: 'customer-area', label: __( 'Customer area', 'pikit-widget' ) },
+	{ value: 'history', label: __( 'Booking history', 'pikit-widget' ) },
+	{ value: 'gift-card', label: __( 'Gift cards', 'pikit-widget' ) },
+	{ value: 'shop', label: __( 'Shop', 'pikit-widget' ) },
+	{ value: 'membership', label: __( 'Memberships', 'pikit-widget' ) },
+];
+
+const PIKIT_ID_FIELDS = [
+	{ name: 'branch', label: __( 'Location ID', 'pikit-widget' ) },
+	{ name: 'category', label: __( 'Category ID', 'pikit-widget' ) },
+	{ name: 'provider', label: __( 'Provider ID', 'pikit-widget' ) },
+	{ name: 'service', label: __( 'Service ID', 'pikit-widget' ) },
+];
+
+/**
+ * Keep only characters allowed in a Pikit ID.
+ *
+ * @param {string} value Raw input.
+ * @return {string}
+ */
+function cleanId( value ) {
+	return value.replace( /[^A-Za-z0-9_-]/g, '' );
+}
 
 /**
  * Join class names (clsx-style).
@@ -108,6 +145,47 @@ function WidthPanel( { selectedWidth, setAttributes } ) {
 }
 
 /**
+ * "Open widget at" panel: choose the page the widget opens on.
+ *
+ * @param {Object}   props               Component props.
+ * @param {Object}   props.attributes    Block attributes.
+ * @param {Function} props.setAttributes Set attributes callback.
+ */
+function TargetPanel( { attributes, setAttributes } ) {
+	return (
+		<PanelBody
+			title={ __( 'Open widget at', 'pikit-widget' ) }
+			initialOpen={ false }
+		>
+			<SelectControl
+				__nextHasNoMarginBottom
+				label={ __( 'Page', 'pikit-widget' ) }
+				value={ attributes.step || '' }
+				options={ PIKIT_STEPS }
+				onChange={ ( value ) => setAttributes( { step: value } ) }
+			/>
+			{ PIKIT_ID_FIELDS.map( ( field ) => (
+				<TextControl
+					key={ field.name }
+					__nextHasNoMarginBottom
+					label={ field.label }
+					value={ attributes[ field.name ] || '' }
+					onChange={ ( value ) =>
+						setAttributes( { [ field.name ]: cleanId( value ) } )
+					}
+				/>
+			) ) }
+			<p className="pikit-button-panel-note">
+				{ __(
+					'All fields are optional. Copy IDs from your Pikit dashboard. Leave empty to open the default first page.',
+					'pikit-widget'
+				) }
+			</p>
+		</PanelBody>
+	);
+}
+
+/**
  * Editor component.
  *
  * @param {Object}   props               Block props.
@@ -163,6 +241,10 @@ function Edit( { attributes, setAttributes, className } ) {
 			<InspectorControls>
 				<WidthPanel
 					selectedWidth={ width }
+					setAttributes={ setAttributes }
+				/>
+				<TargetPanel
+					attributes={ attributes }
 					setAttributes={ setAttributes }
 				/>
 			</InspectorControls>

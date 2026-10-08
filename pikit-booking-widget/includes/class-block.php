@@ -104,34 +104,52 @@ class Pikit_Booking_Block {
 		$content    = is_string( $content ) ? trim( $content ) : '';
 
 		if ( '' !== $content ) {
-			return $this->ensure_pikit_trigger_markup( $content );
+			return $this->ensure_pikit_trigger_markup( $content, $attributes );
 		}
 
 		return $this->render_legacy_block( $attributes, $block );
 	}
 
 	/**
-	 * Force the Pikit booking trigger on anchor elements in saved markup.
+	 * Force the Pikit booking trigger and target data attributes on anchors.
 	 *
-	 * @param string $content Saved block HTML.
+	 * Older saved markup carries id="pikit-open"; it is removed because the
+	 * loader finds the trigger through data-pikit-open.
+	 *
+	 * @param string $content    Saved block HTML.
+	 * @param array  $attributes Block attributes.
 	 * @return string
 	 */
-	private function ensure_pikit_trigger_markup( $content ) {
+	private function ensure_pikit_trigger_markup( $content, array $attributes = array() ) {
+		$data = Pikit_Booking_Target::get_attributes( $attributes );
+
 		if ( class_exists( 'WP_HTML_Tag_Processor' ) ) {
 			$processor = new WP_HTML_Tag_Processor( $content );
 
 			while ( $processor->next_tag( 'A' ) ) {
 				$processor->set_attribute( 'href', '#pikit-open' );
-				$processor->set_attribute( 'id', 'pikit-open' );
+
+				if ( 'pikit-open' === $processor->get_attribute( 'id' ) ) {
+					$processor->remove_attribute( 'id' );
+				}
+
+				foreach ( Pikit_Booking_Target::ATTRIBUTES as $name ) {
+					$processor->remove_attribute( $name );
+				}
+
+				foreach ( $data as $name => $value ) {
+					$processor->set_attribute( $name, $value );
+				}
 			}
 
 			return wp_kses_post( $processor->get_updated_html() );
 		}
 
+		$updated = preg_replace( '/\sid="pikit-open"/i', '', $content );
 		$updated = preg_replace(
 			'/<a\s+/i',
-			'<a id="pikit-open" href="#pikit-open" ',
-			$content,
+			'<a href="#pikit-open"' . Pikit_Booking_Target::get_attributes_html( $attributes ) . ' ',
+			$updated,
 			1
 		);
 
@@ -206,11 +224,12 @@ class Pikit_Booking_Block {
 		);
 
 		return sprintf(
-			'<div %1$s><a class="%2$s" href="#pikit-open" id="pikit-open" style="%3$s">%4$s</a></div>',
+			'<div %1$s><a class="%2$s" href="#pikit-open"%5$s style="%3$s">%4$s</a></div>',
 			$wrapper_attributes,
 			esc_attr( implode( ' ', array_unique( $link_classes ) ) ),
 			esc_attr( $link_style ),
-			wp_kses_post( $text )
+			wp_kses_post( $text ),
+			Pikit_Booking_Target::get_attributes_html( $attributes )
 		);
 	}
 }
